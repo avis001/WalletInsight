@@ -30,7 +30,7 @@ playground.xcworkspace
 # .swiftpm
 
 # MAC File System
-.DS_Store
+**/._.DS_Store
 
 .build/
 
