@@ -20,7 +20,7 @@ struct SignInSignUpTabBarView: View {
                     Text("signIn")
                         .frame(maxWidth: .greatestFiniteMagnitude, maxHeight: .greatestFiniteMagnitude, alignment: .center)
                         .foregroundStyle(
-                            viewModel.authPath == .signIn ? Color.surfaceDark : Color.secondary
+                            viewModel.authPath == .signIn ? Color.actionPrimary : Color.secondary
                         )
                 })
                 .disabled(
@@ -38,7 +38,7 @@ struct SignInSignUpTabBarView: View {
                     Text("signUp")
                         .frame(maxWidth: .greatestFiniteMagnitude, maxHeight: .greatestFiniteMagnitude, alignment: .center)
                         .foregroundStyle(
-                            viewModel.authPath == .signUp ? Color.surfaceDark : Color.secondary
+                            viewModel.authPath == .signUp ? Color.actionPrimary : Color.secondary
                         )
                 })
                 .disabled(
@@ -64,5 +64,6 @@ struct SignInSignUpTabBarView: View {
     VStack {
         Spacer()
         SignInSignUpTabBarView(viewModel: .constant(AuthenticationViewModel(authService: MockAuthenticationService.previewMock)))
+            .background(.backgroundMain)
     }
 }

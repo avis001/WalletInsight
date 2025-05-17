@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    private var authService: AuthenticationServiceProtocol
+    
+    init(authService: AuthenticationServiceProtocol) {
+        self.authService = authService
+    }
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        SignInSignUpView(authService: authService)
+            .background(.backgroundMain)
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(authService: MockAuthenticationService.previewMock)
 }

@@ -23,7 +23,7 @@ struct SignInSignUpView: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding()
-                .foregroundStyle(Color.backgroundDark)
+                .foregroundStyle(Color.textPrimary)
             
             Group {
                 if viewModel.authPath == .signIn {
@@ -48,4 +48,5 @@ struct SignInSignUpView: View {
 
 #Preview {
     SignInSignUpView(authService: MockAuthenticationService.previewMock)
+        .background(.backgroundMain)
 }

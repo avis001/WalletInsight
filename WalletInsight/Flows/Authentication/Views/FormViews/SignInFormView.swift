@@ -62,7 +62,7 @@ struct SignInFormView: View {
             .disabled(viewModel.isProcessing)
             .background(
                 RoundedRectangle(cornerRadius: CornerRadius.level3)
-                    .fill(Color.surfaceDark)
+                    .fill(Color.actionPrimary)
             )
             
             AlternateSignInOptionsView()
@@ -74,4 +74,5 @@ struct SignInFormView: View {
     SignInFormView(viewModel: AuthenticationViewModel(authService: MockAuthenticationService.previewMock))
         .padding()
         .frame(maxWidth: .greatestFiniteMagnitude, maxHeight: .greatestFiniteMagnitude)
+        .background(.backgroundMain)
 }

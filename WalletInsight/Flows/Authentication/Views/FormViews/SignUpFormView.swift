@@ -104,7 +104,7 @@ struct SignUpFormView: View {
             .disabled(viewModel.isProcessing)
             .background(
                 RoundedRectangle(cornerRadius: CornerRadius.level3)
-                    .fill(Color.surfaceDark)
+                    .fill(Color.actionPrimary)
             )
         }.padding(.horizontal, 24)
     }
@@ -114,4 +114,5 @@ struct SignUpFormView: View {
     SignUpFormView(viewModel: AuthenticationViewModel(authService: MockAuthenticationService.previewMock))
         .padding()
         .frame(maxWidth: .greatestFiniteMagnitude, maxHeight: .greatestFiniteMagnitude)
+        .background(.backgroundMain)
 }

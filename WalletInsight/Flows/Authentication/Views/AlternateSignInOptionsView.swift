@@ -41,7 +41,7 @@ struct AlternateSignInOptionsView: View {
                 .font(.title)
                 .fontWeight(.medium)
                 .foregroundStyle(Color.white)
-                .background(Color.surfaceDark)
+                .background(Color.actionPrimary)
                 .clipShape(RoundedRectangle(cornerRadius: CornerRadius.level1))
             }
             .padding(.top, Spacing.medium)
@@ -53,6 +53,7 @@ struct AlternateSignInOptionsView: View {
     AlternateSignInOptionsView()
         .padding()
         .frame(maxWidth: .greatestFiniteMagnitude, maxHeight: .greatestFiniteMagnitude)
+        .background(.backgroundMain)
 }
 
 // Pragma:- Private Support
@@ -68,6 +69,5 @@ private struct ButtonLabel: View {
         Text(text)
             .frame(width: 50, height: 50, alignment: .center)
             .padding(.horizontal)
-
     }
 }

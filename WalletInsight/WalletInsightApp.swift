@@ -6,12 +6,20 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct WalletInsightApp: App {
+    private let authService: AuthenticationService
+    
+    init() {
+        FirebaseApp.configure()
+        authService = AuthenticationService()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(authService: authService)
         }
     }
 }
