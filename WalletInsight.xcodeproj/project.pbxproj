@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		57896BAE2DD6320A00624DBC /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 57896BAD2DD6320A00624DBC /* DesignSystem */; };
+		57896BB42DD8F60300624DBC /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 57896BB32DD8F60300624DBC /* FirebaseAnalytics */; };
+		57896BB62DD8F60300624DBC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 57896BB52DD8F60300624DBC /* FirebaseAuth */; };
+		57896BB82DD8F60300624DBC /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 57896BB72DD8F60300624DBC /* FirebaseStorage */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		57896B0C2DD6291500624DBC /* WalletInsight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalletInsight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +30,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57896BB42DD8F60300624DBC /* FirebaseAnalytics in Frameworks */,
+				57896BB82DD8F60300624DBC /* FirebaseStorage in Frameworks */,
+				57896BB62DD8F60300624DBC /* FirebaseAuth in Frameworks */,
+				57896BAE2DD6320A00624DBC /* DesignSystem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +76,10 @@
 			);
 			name = WalletInsight;
 			packageProductDependencies = (
+				57896BAD2DD6320A00624DBC /* DesignSystem */,
+				57896BB32DD8F60300624DBC /* FirebaseAnalytics */,
+				57896BB52DD8F60300624DBC /* FirebaseAuth */,
+				57896BB72DD8F60300624DBC /* FirebaseStorage */,
 			);
 			productName = WalletInsight;
 			productReference = 57896B0C2DD6291500624DBC /* WalletInsight.app */;
@@ -94,6 +109,10 @@
 			);
 			mainGroup = 57896B032DD6291500624DBC;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				57896BAC2DD6320A00624DBC /* XCRemoteSwiftPackageReference "DesignSystem" */,
+				57896BB22DD8F60300624DBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 57896B0D2DD6291500624DBC /* Products */;
 			projectDirPath = "";
@@ -324,6 +343,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		57896BAC2DD6320A00624DBC /* XCRemoteSwiftPackageReference "DesignSystem" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/avis001/DesignSystem.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		57896BB22DD8F60300624DBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		57896BAD2DD6320A00624DBC /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57896BAC2DD6320A00624DBC /* XCRemoteSwiftPackageReference "DesignSystem" */;
+			productName = DesignSystem;
+		};
+		57896BB32DD8F60300624DBC /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57896BB22DD8F60300624DBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		57896BB52DD8F60300624DBC /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57896BB22DD8F60300624DBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		57896BB72DD8F60300624DBC /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57896BB22DD8F60300624DBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 57896B042DD6291500624DBC /* Project object */;
 }
