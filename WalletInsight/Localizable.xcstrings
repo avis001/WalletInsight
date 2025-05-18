@@ -14,6 +14,17 @@
     "%@" : {
 
     },
+    "appName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wallet Insight"
+          }
+        }
+      }
+    },
     "confirmPassword" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -32,6 +43,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Continue"
+          }
+        }
+      }
+    },
+    "continueWith" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue with"
+          }
+        }
+      }
+    },
+    "continueWithOtherOptions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue with Other Options"
           }
         }
       }
@@ -86,13 +119,13 @@
         }
       }
     },
-    "orSignInUsing" : {
+    "orContinueUsing" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Or Sign In Using"
+            "value" : "Or Continue Using"
           }
         }
       }
@@ -126,6 +159,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sign Up"
+          }
+        }
+      }
+    },
+    "signUpWithEmail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SignUp with Email"
+          }
+        }
+      }
+    },
+    "splashScreenHookOne" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Let’s turn chaotic statements into clear insights. Effortlessly."
           }
         }
       }

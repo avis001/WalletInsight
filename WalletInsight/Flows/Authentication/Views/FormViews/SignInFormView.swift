@@ -53,17 +53,11 @@ struct SignInFormView: View {
                         .padding(.horizontal, Spacing.xl)
                 } else {
                     Text("continue")
-                        .padding()
-                        .padding(.horizontal, Spacing.xl)
-                        .fontWeight(.bold)
-                        .foregroundStyle(Color.white)
+                        .wiPrimaryButtonTextStyle()
                 }
             }
             .disabled(viewModel.isProcessing)
-            .background(
-                RoundedRectangle(cornerRadius: CornerRadius.level3)
-                    .fill(Color.actionPrimary)
-            )
+            .wiPrimaryButtonStyleModifier()
             
             AlternateSignInOptionsView()
         }.padding(.horizontal, Spacing.large)
