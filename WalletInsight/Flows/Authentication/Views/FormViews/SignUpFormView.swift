@@ -20,88 +20,105 @@ struct SignUpFormView: View {
     @State private var emailText: String = .empty
     @State private var passwordText: String = .empty
     @State private var confirmPasswordText: String = .empty
+    @Environment(\.dismiss) private var dismiss
+    private let hapticGenerator = UIImpactFeedbackGenerator(style: .medium)
     
     var body: some View {
-        VStack (alignment: .center, spacing: Spacing.medium) {
-            Group {
-                TextField(" \(Image(systemName: "person.fill")) \(String(localized: "fName"))", text: $fNameText)
-                    .focused($selectedField, equals: SelectedField.fName)
-                    .hitTestablePadding()
-                    .textContentType(.name)
-                    .keyboardType(.alphabet)
-                    .onTapGesture {
-                        selectedField = .fName
-                    }
-                
-                TextField(" \(Image(systemName: "person.fill")) \(String(localized: "lName"))", text: $lNameText)
-                    .focused($selectedField, equals: SelectedField.lName)
-                    .hitTestablePadding()
-                    .textContentType(.familyName)
-                    .keyboardType(.alphabet)
-                    .onTapGesture {
-                        selectedField = .lName
-                    }
-                
-                TextField(" \(Image(systemName: "envelope.fill")) \(String(localized: "email"))", text: $emailText)
-                    .focused($selectedField, equals: SelectedField.email)
-                    .hitTestablePadding()
-                    .textContentType(.emailAddress)
-                    .keyboardType(.emailAddress)
-                    .onTapGesture {
-                        selectedField = .email
-                    }
-                
-                SecureField(" \(Image(systemName: "lock.fill")) \(String(localized: "password"))", text: $passwordText)
-                    .focused($selectedField, equals: SelectedField.password)
-                    .hitTestablePadding()
-                    .textContentType(.newPassword)
-                    .onTapGesture {
-                        selectedField = .password
-                    }
-                
-                SecureField(" \(Image(systemName: "lock.fill")) \(String(localized: "confirmPassword"))", text: $confirmPasswordText)
-                    .focused($selectedField, equals: SelectedField.confirmPassword)
-                    .hitTestablePadding()
-                    .textContentType(.newPassword)
-                    .onTapGesture {
-                        selectedField = .confirmPassword
-                    }
-            }
-            .overlay(
-                RoundedRectangle(cornerRadius: CornerRadius.level3)
-                    .fill(Color.primary.opacity(0.04))
-                    .allowsHitTesting(false)
-            )
-            
-            if let errorMessage = viewModel.errorMessage {
-                Text(errorMessage)
-                    .foregroundColor(.red)
-                    .font(.caption)
-            }
-                        
-            Button {
-                Task {
-                    await viewModel.signUp(
-                        email: emailText,
-                        password: passwordText,
-                        firstName: fNameText,
-                        lastName: lNameText
-                    )
+        NavigationStack {
+            VStack (alignment: .center, spacing: Spacing.medium) {
+                Group {
+                    TextField(" \(Image(systemName: "person.fill")) \(String(localized: "fName"))", text: $fNameText)
+                        .focused($selectedField, equals: SelectedField.fName)
+                        .hitTestablePadding()
+                        .textContentType(.name)
+                        .keyboardType(.alphabet)
+                        .onTapGesture {
+                            selectedField = .fName
+                        }
+                    
+                    TextField(" \(Image(systemName: "person.fill")) \(String(localized: "lName"))", text: $lNameText)
+                        .focused($selectedField, equals: SelectedField.lName)
+                        .hitTestablePadding()
+                        .textContentType(.familyName)
+                        .keyboardType(.alphabet)
+                        .onTapGesture {
+                            selectedField = .lName
+                        }
+                    
+                    TextField(" \(Image(systemName: "envelope.fill")) \(String(localized: "email"))", text: $emailText)
+                        .focused($selectedField, equals: SelectedField.email)
+                        .hitTestablePadding()
+                        .textContentType(.emailAddress)
+                        .keyboardType(.emailAddress)
+                        .onTapGesture {
+                            selectedField = .email
+                        }
+                    
+                    SecureField(" \(Image(systemName: "lock.fill")) \(String(localized: "password"))", text: $passwordText)
+                        .focused($selectedField, equals: SelectedField.password)
+                        .hitTestablePadding()
+                        .textContentType(.newPassword)
+                        .onTapGesture {
+                            selectedField = .password
+                        }
+                    
+                    SecureField(" \(Image(systemName: "lock.fill")) \(String(localized: "confirmPassword"))", text: $confirmPasswordText)
+                        .focused($selectedField, equals: SelectedField.confirmPassword)
+                        .hitTestablePadding()
+                        .textContentType(.newPassword)
+                        .onTapGesture {
+                            selectedField = .confirmPassword
+                        }
                 }
-            } label: {
-                if viewModel.isProcessing {
-                    ProgressView()
-                        .padding()
-                        .padding(.horizontal, Spacing.xl)
-                } else {
-                    Text("continue")
-                        .wiPrimaryButtonTextStyle()
+                .overlay(
+                    RoundedRectangle(cornerRadius: CornerRadius.level3)
+                        .fill(Color.primary.opacity(0.04))
+                        .allowsHitTesting(false)
+                )
+                
+                if let errorMessage = viewModel.errorMessage {
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                        .font(.caption)
                 }
-            }
-            .disabled(viewModel.isProcessing)
-            .wiPrimaryButtonStyleModifier()
+                            
+                Button {
+                    hapticGenerator.impactOccurred()
+                    Task {
+                        await viewModel.signUp(
+                            email: emailText,
+                            password: passwordText,
+                            firstName: fNameText,
+                            lastName: lNameText
+                        )
+                    }
+                } label: {
+                    if viewModel.isProcessing {
+                        ProgressView()
+                            .padding()
+                            .padding(.horizontal, Spacing.xl)
+                    } else {
+                        Text("continue")
+                            .wiPrimaryButtonTextStyle()
+                    }
+                }
+                .disabled(viewModel.isProcessing)
+                .wiPrimaryButtonStyleModifier()
 
-        }.padding(.horizontal, 24)
+            }
+            .padding(.horizontal, 24)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        hapticGenerator.impactOccurred()
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.primary)
+                    }
+                }
+            }
+        }
     }
 }
 

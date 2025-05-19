@@ -30,7 +30,9 @@ playground.xcworkspace
 # .swiftpm
 
 # MAC File System
-**/._.DS_Store
+**/.DS_Store
+._.DS_Store # If you want to keep ignoring these specific variants too
+.DS_Store # Add this line to ignore all .DS_Store files
 
 .build/
 

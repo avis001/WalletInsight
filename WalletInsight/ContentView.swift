@@ -15,7 +15,7 @@ struct ContentView: View {
     }
     
     var body: some View {
-        SignInSignUpView(authService: authService)
+        AuthenticationSplashView(authService: authService)
             .background(.backgroundMain)
     }
 }

@@ -9,6 +9,15 @@ import SwiftUI
 import DesignSystem
 
 public struct AuthenticationSplashView: View {
+    @State private var viewModel: AuthenticationViewModel
+    @State private var isPresentingSignIn: Bool = false
+    @State private var isPresentingSignUp: Bool = false
+    private let hapticGenerator = UIImpactFeedbackGenerator(style: .medium)
+    
+    init(authService: AuthenticationServiceProtocol) {
+        _viewModel = State(initialValue: AuthenticationViewModel(authService: authService))
+    }
+    
     public var body: some View {
         VStack(alignment: .leading, spacing: .zero) {
             Spacer()
@@ -28,7 +37,8 @@ public struct AuthenticationSplashView: View {
             
             Group {
                 Button {
-                    //
+                    hapticGenerator.impactOccurred()
+                    // Action for Apple Sign In
                 } label: {
                     Spacer()
                     Text("\(LocalizedStringResource("continueWith"))  \(Image(systemName: "apple.logo"))")
@@ -39,7 +49,8 @@ public struct AuthenticationSplashView: View {
                 .padding(.top, Spacing.xl)
                 
                 Button {
-                    //
+                    hapticGenerator.impactOccurred()
+                    isPresentingSignIn = true
                 } label: {
                     Spacer()
                     Text("continueWithOtherOptions")
@@ -50,7 +61,8 @@ public struct AuthenticationSplashView: View {
                 .padding(.top, Spacing.medium)
                 
                 Button {
-                    //
+                    hapticGenerator.impactOccurred()
+                    isPresentingSignUp = true
                 } label: {
                     Spacer()
                     Text("signUpWithEmail")
@@ -61,13 +73,20 @@ public struct AuthenticationSplashView: View {
                 .padding(.top, Spacing.medium)
             }
         }
-        .frame(maxWidth: .infinity)
         .padding(.leading, Spacing.medium)
         .padding(.trailing, Spacing.small)
+        .sheet(isPresented: $isPresentingSignIn) {
+            SignInFormView(viewModel: viewModel)
+                .presentationBackground(.regularMaterial)
+        }
+        .sheet(isPresented: $isPresentingSignUp) {
+            SignUpFormView(viewModel: viewModel)
+                .presentationBackground(.regularMaterial)
+        }
     }
 }
 
 #Preview {
-    AuthenticationSplashView()
+    AuthenticationSplashView(authService: MockAuthenticationService.previewMock)
         .background(.backgroundMain)
 }

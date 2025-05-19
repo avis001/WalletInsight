@@ -9,6 +9,8 @@ import SwiftUI
 import DesignSystem
 
 struct AlternateSignInOptionsView: View {
+    private let hapticGenerator = UIImpactFeedbackGenerator(style: .medium)
+
     var body: some View {
         VStack(spacing: .zero) {
             HStack(alignment: .center) {
@@ -21,18 +23,14 @@ struct AlternateSignInOptionsView: View {
             HStack {
                 Group {
                     Button(action: {
-                        //
-                    }, label: {
-                        ButtonLabel("\(Image(systemName: "apple.logo"))")
-                    })
-                    
-                    Button(action: {
+                        hapticGenerator.impactOccurred()
                         //
                     }, label: {
                         ButtonLabel("f")
                     })
                     
                     Button(action: {
+                        hapticGenerator.impactOccurred()
                         //
                     }, label: {
                         ButtonLabel("G")

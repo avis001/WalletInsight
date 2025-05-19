@@ -54,10 +54,6 @@ struct WiSecondaryButtonStyleModifier: ViewModifier {
             .buttonStyle(.borderedProminent)
             .buttonBorderShape(.roundedRectangle(radius: CornerRadius.level3))
             .tint(.borderSubtle.opacity(0.5))
-            .overlay(
-                RoundedRectangle(cornerRadius: CornerRadius.level3)
-                    .stroke(Color.borderSubtle, lineWidth: 1)
-            )
     }
 }
 
